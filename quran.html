@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ku">
+<head>
+  <meta charset="UTF-8">
+  <title>قورئان</title>
+  <style>
+ 
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* Body Styling */
+    body {
+      font-family: 'nrt', sans-serif;
+      background-color: #ffffff; /* Light blue background */
+      color: #333;
+      padding: 0;
+      text-align: right; /* Align text to the right for Kurdish */
+      direction: rtl; /* Right to Left Direction */
+      min-height: 100vh; /* Ensure body takes at least the full height of the window */
+      display: flex;
+      flex-direction: column; /* Makes the header, content, and footer stack vertically */
+    }
+
+
+
+    header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px; /* Larger padding initially */
+  background-color: #ffffff;
+  font-family: "nrt", sans-serif;
+ 
+  transition: padding 0.3s ease, font-size 0.3s ease; /* Smooth transition for changes */
+  border-bottom: 1px solid #0095ff; /* Add a line under the header */
+}
+
+header.shrink {
+  padding: 10px 20px; /* Smaller padding when sticky */
+}
+
+ 
+
+header.shrink h1 {
+  font-size: 25px; /* Smaller font size when sticky */
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: #007acc;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: color 0.3s ease; /* Transition for color change */
+  font-family: "nrt", sans-serif;
+}
+
+nav a:hover {
+  color: #001d30; /* Change text color on hover */
+}
+
+ 
+ 
+/* Inner content aligned in a row (right to left) */
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: flex-start;
+}
+
+/* Logo styling */
+.header-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #aaa;
+}
+
+/* Page name styling */
+.page-name {
+  font-size: 24px;
+  color: #2c2c2c;
+  font-family: 'nrt', sans-serif;
+  margin: 0;
+  font-weight: bold;
+}
+
+
+
+
+
+ 
+.title-container {
+  background-color: #f7f7f7; /* Shared background color */
+  padding: 20px 20px;
+  text-align: center;
+  border-radius: 0px; /* Optional: rounded corners */
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 30px;
+  margin: 0; /* Remove default margin */
+  color: #000000;
+  font-family: "nrt", sans-serif;
+  margin-bottom: 20px;
+}
+
+h4 {
+  font-size: 18px;
+  margin: 0; /* Remove default margin */
+  color: #4e4e4e;
+  font-family: "nrt", sans-serif;
+}
+
+/* Search Bar Styling */
+#search-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+#searchInput {
+  padding: 10px;
+  font-size: 1em;
+  font-family: "nrt", sans-serif;
+  width: 250px;
+  border: 2px solid #007acc; /* Blue border */
+  border-radius: 5px;
+  margin-left: 10px; /* Adjust for RTL */
+}
+
+button {
+  font-family: "nrt", sans-serif;
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0099ff; /* Blue on hover */
+}
+
+/* Back Button */
+.back-btn {
+  background-color: #007acc;
+  margin-right: 10px; /* Adjust for RTL */
+  font-family: "nrt", sans-serif;
+}
+
+.back-btn:hover {
+  background-color: #0099ff;
+}
+
+/* Surah List Section */
+#surah-list {
+  padding: 20px;
+  background-color: #ffffff;
+  text-align: center;
+  flex: 1; /* Ensure the content area takes up all available space */
+}
+
+#surah-list h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #000000; /* Blue color for section title */
+}
+
+.surah-container {
+  list-style: none;
+  padding: 0;
+}
+
+.surah-container li {
+  background-color: #007acc;
+  color: white;
+  padding: 15px 20px;
+  margin: 10px 0;
+  border-radius: 8px;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.surah-container li:hover {
+  background-color: #2d6a4f;
+  transform: translateY(-5px);
+}
+
+/* Table Styling for Surah List */
+#surah-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+#surah-table th, #surah-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: center; /* Align content to the right */
+}
+
+#surah-table th {
+  background-color: #007acc; /* Blue background for table headers */
+  color: white;
+}
+
+#surah-table td {
+  background-color: #f4f4f4;
+  font-family: 'Noto Kufi Arabic', sans-serif;
+  color: #000000;
+}
+ 
+
+#surah-table tr:hover {
+  background-color: #e1efff; /* Light blue hover effect */
+  cursor: pointer;
+}
+
+.message-box {
+  background-color: #ffffff;
+  font-family: 'nrt', sans-serif;
+  text-align: center;
+  color: red;
+  font-size: 20px;
+  max-width: 500px;
+  margin: 20px auto;
+  direction: rtl;
+}
+
+
+
+/* Footer */
+
+ footer {
+  background-color: #f4f4f4;
+  padding: 10px;
+  direction: rtl;
+  font-family: 'nrt', sans-serif;
+}
+
+/* Horizontal row with RTL */
+.footer-row {
+  display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+      margin-bottom: 30px;
+}
+
+/* Logo + Name */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+ margin-right: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 10px; /* 👈 This adds space between logo and border */
+  border-bottom: 1px solid #00000077;
+ margin-top: 30px;
+}
+
+
+.footer-logo img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+}
+
+.footer-logo .pagename {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0f0f0f;
+}
+
+.logo-description{
+  display: block;
+  text-decoration: none;
+  color: #414040;
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-family: 'nrt', sans-serif;
+  transition: color 0.3s ease;
+margin-right: 30px;
+}
+
+
+/* Description */
+.webparts {
+  direction: rtl;
+  margin-bottom: 20px;
+  margin-right: 180px;
+  margin-top: 25px;
+}
+
+.title-parts {
+  display: inline-block; /* 👈 key to make border fit content */
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #000000;
+  font-family: 'nrt', sans-serif;
+  border-bottom: 1px solid #0000006b;
+ 
+}
+
+
+/* Style links in vertical list */
+.webparts a {
+  display: block;
+  text-decoration: none;
+  color: #414040;
+  font-size: 16px;
+  margin-bottom: 5px;
+  font-family: 'nrt', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.webparts a:hover {
+  color: #082ca1; /* a nice green hover, change if you want */
+}
+ 
+
+.title-conect {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+   margin-bottom: 10px;
+  color: #222;
+  font-family: 'nrt', sans-serif;
+  border-bottom: 1px solid #0000006b;
+ 
+}
+
+.footer-social {
+  direction: rtl;
+  text-align: right;
+  margin-right: 150px;
+  margin-top: 20px;
+ 
+}
+
+/* 👇 Makes the whole link appear below the title */
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px; /* spacing from title */
+  text-decoration: none;
+  color: #414040;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: 'nrt', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.social-link:hover {
+  color: #082ca1;
+}
+
+.instagram-icon {
+  width: 24px;
+  height: 24px;
+}
+
+
+.footer-copy {
+ 
+  padding-top: 9px;
+  
+   margin-top: 10px;
+   
+   border-top: 1px solid #c2c2c2;
+  text-align: center;
+  direction: rtl;
+  font-family: 'nrt', sans-serif;
+ 
+}
+
+.footer-copy .descriptionss {
+  display: block;
+  text-decoration: none;
+  color: #414040;
+  font-size: 16px;
+ 
+  font-family: 'nrt', sans-serif;
+  transition: color 0.3s ease;
+}
+
+
+  </style>
+</head>
+<body>
+  <header>
+     <div class="header-content">
+    <img src="images/logo.jpg" alt="Logo" class="header-logo">
+    <h2 class="page-name">ڕێـــــــگــەی خــــودا</h2>
+  </div>
+
+    
+      <nav>
+        
+        <a href="index.html">سەرەکی</a>
+        <a href="prayer.html">نوێژەکان</a>
+        <a href="adhkar.html">زیکرەکان</a>
+       
+        <a href="quran.html">قورئان</a> 
+        <a href="allah-name.html">ناوەکانی خودا</a> <!-- Example link for Allah's names -->
+      </nav>
+    </header>
+   
+  <div class="title-container">
+    <h1>تەواو سوڕەتەکانی قورئانی پیرۆز</h1>
+    <h4>لەگەڵ ماناکانیان بە زمانی شیرینی کوردی</h4>
+  </div>
+
+  <div id="search-container">
+    <input type="text" id="searchInput" placeholder="گەڕان بۆ سوڕەت...">
+    <button onclick="searchSurah()">بڕۆ</button>
+    <button class="back-btn" onclick="reloadSurahList()">گەڕانەوە</button>
+
+  </div>
+   
+  <br>
+  <br>
+  <div id="result"></div>
+
+ <section id="surah-list">
+  <div id="surah-section"> <!-- NEW WRAPPER -->
+    <h2>لیستی سۆرەکان</h2>
+
+    <table id="surah-table">
+      <thead>
+        <tr>
+          <th>ژمارەی سوڕەت</th>
+          <th>نـاوی سوڕەت</th>
+          <th>ژمارەی ئایەتەکان</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Surah rows will be dynamically added here -->
+      </tbody>
+    </table>
+  </div>
+</section>
+
+  
+   
+<script>
+  let allSurahs = [];
+  
+  function loadSurahList() {
+    // Fetch the XML file and load the Surah list
+    fetch("quran.xml")
+      .then(res => res.text())
+      .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+      .then(data => {
+        const surahs = data.getElementsByTagName("sura");
+        allSurahs = [];
+  
+        const tableBody = document.querySelector("#surah-table tbody");
+        tableBody.innerHTML = ''; // Clear previous list
+  
+        // Loop through each surah and populate the table
+        for (let i = 0; i < surahs.length; i++) {
+          const name = surahs[i].getAttribute("name");
+          const index = surahs[i].getAttribute("index");
+          const ayahCount = surahs[i].getElementsByTagName("aya").length;
+  
+          allSurahs.push({ name, index, ayahCount });
+  
+          const rowHTML = `
+            <tr onclick="goToSurah(${index})">
+              <td>${index}</td>
+            <td>${name}</td>
+
+              <td>${ayahCount}</td>
+            </tr>
+          `;
+  
+          tableBody.innerHTML += rowHTML;
+        }
+      });
+  }
+  
+  function searchSurah() {
+    const input = document.getElementById("searchInput").value.trim();
+    const foundSurahs = allSurahs.filter(surah =>
+      surah.name.toLowerCase().includes(input.toLowerCase())
+    );
+  
+    const tableBody = document.querySelector("#surah-table tbody");
+    const resultDiv = document.getElementById('result');
+    const surahSection = document.getElementById('surah-section');
+  
+    tableBody.innerHTML = ''; // Clear previous list
+    resultDiv.innerHTML = ''; // Clear previous message
+  
+    if (foundSurahs.length > 0) {
+      // Show the table and heading if results are found
+      surahSection.style.display = "block"; 
+      foundSurahs.forEach(surah => {
+        const rowHTML = `
+          <tr onclick="goToSurah(${surah.index})">
+            <td>${surah.index}</td>
+            <td>${surah.name}</td>
+            <td>${surah.ayahCount}</td>
+          </tr>
+        `;
+        tableBody.innerHTML += rowHTML;
+      });
+    } else {
+      // Hide the table and heading if no result
+      surahSection.style.display = "none"; 
+      resultDiv.innerHTML = `
+        <div class="message-box">
+          <p>هیچ سوڕەتێک نەدۆزرایەوە</p>
+          <p>تکایە ناوی سوڕەتەکە بەڕاستی بنوسە</p>
+          <p>تێبینی : پێویستە ناوی سوڕەتەکە بە زمانی عەرەبی بنوسرێت</p>
+        </div>
+      `;
+    }
+  }
+  function reloadSurahList() {
+  // Reload the page to show the full list again
+  location.reload();
+}
+
+  function goToSurah(index) {
+    // Navigate to the selected Surah page
+    window.location.href = `surah.html?surah=${index}`;
+  }
+  
+  // Initialize Surah List on page load
+  loadSurahList();
+
+  window.onscroll = function() {
+  let header = document.querySelector('header');
+  if (window.pageYOffset > 100) {  // When you scroll 100px from the top
+    header.classList.add('shrink');
+  } else {
+    header.classList.remove('shrink');
+  }
+};
+  </script>
+  
+
+ 
+
+<footer>
+ 
+   <div class="footer-row">
+    
+<!-- Logo + Name + Description -->
+<div class="footer-logo-block">
+  <!-- Logo + Name Side by Side -->
+  <div class="footer-logo">
+    <img src="images/logo.jpg" alt="Logo">
+    <p class="pagename">ڕێــــگـــــەی خـــــودا</p>
+  </div>
+
+  <!-- Short Description Below -->
+  <p class="logo-description">
+    ماڵپەڕێکی ئیسلامییە کە بۆ مەبەستی نزیککردنەوەی دڵ و دەروونی مرۆڤ بە خوای گەورە دروستکراوە.
+    
+  </p>
+</div>
+
+    <!-- Description -->
+    <div class="webparts">
+      <p class="title-parts">
+        بەشەکان
+      </p>
+    
+        <a href="index.html">سەرەکی</a>
+        <a href="prayer.html">نوێژەکان</a>
+        <a href="adhkar.html">زیکرەکان</a>
+        <a href="quran.html">قورئان</a> 
+        <a href="allah-name.html">ناوەکانی خودا</a> 
+    </div>
+
+<div class="footer-social">
+  <p class="title-conect">بۆ پەیوەندیکردن </p>
+<br>
+  <a href="https://www.instagram.com/code_with_asma" target="_blank" class="social-link">
+   
+    code with asma
+      <img src="images/instagram.png" alt="Instagram" class="instagram-icon">
+  </a>
+</div>
+
+
+  </div>
+  
+
+  <div class="footer-copy">
+    <p class="descriptionss">
+      مافی هەموو موسڵمانێکه‌ بۆ سود وه‌رگرتن و بڵاو کردنه‌وه‌ی هەموو بابه‌ته‌کانی ماڵپه‌ڕی ڕێگـــەی خـــودا - 2025
+    </p>
+  </div>
+   
+</footer>
+
+</body>
+</html>

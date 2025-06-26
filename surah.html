@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ku">
+<head>
+  <meta charset="UTF-8">
+  <title>سوڕەت</title>
+  <style>
+ 
+   
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* Body Styling */
+    body {
+      font-family: 'nrt', sans-serif;
+      background-color: #ffffff; /* Light blue background */
+      color: #333;
+      padding: 0;
+      text-align: right; /* Align text to the right for Kurdish */
+      direction: rtl; /* Right to Left Direction */
+      min-height: 100vh; /* Ensure body takes at least the full height of the window */
+      display: flex;
+      flex-direction: column; /* Makes the header, content, and footer stack vertically */
+    }
+
+
+
+    header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px; /* Larger padding initially */
+  background-color: #ffffff;
+  font-family: "nrt", sans-serif;
+ 
+  transition: padding 0.3s ease, font-size 0.3s ease; /* Smooth transition for changes */
+  border-bottom: 1px solid #0095ff; /* Add a line under the header */
+}
+
+header.shrink {
+  padding: 10px 20px; /* Smaller padding when sticky */
+}
+
+ 
+
+header.shrink h1 {
+  font-size: 25px; /* Smaller font size when sticky */
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: #007acc;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: color 0.3s ease; /* Transition for color change */
+  font-family: "nrt", sans-serif;
+}
+
+nav a:hover {
+  color: #001d30; /* Change text color on hover */
+}
+
+ 
+ 
+/* Inner content aligned in a row (right to left) */
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: flex-start;
+}
+
+/* Logo styling */
+.header-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #aaa;
+}
+
+/* Page name styling */
+.page-name {
+  font-size: 24px;
+  color: #2c2c2c;
+  font-family: 'nrt', sans-serif;
+  margin: 0;
+  font-weight: bold;
+}
+
+
+
+ 
+.title-container {
+  background-color: #f7f7f7; /* Shared background color */
+  padding: 20px 20px;
+  text-align: center;
+  border-radius: 0px; /* Optional: rounded corners */
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 30px;
+  margin: 0; /* Remove default margin */
+  color: #000000;
+  font-family: "nrt", sans-serif;
+  margin-bottom: 20px;
+}
+
+h4 {
+  font-size: 18px;
+  margin: 0; /* Remove default margin */
+  color: #4e4e4e;
+  font-family: "nrt", sans-serif;
+}
+
+
+
+/* Search Bar Styling */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 10px; /* Space between buttons */
+}
+
+.search-bar input {
+  padding: 10px;
+  font-size: 1em;
+  font-family: "nrt", sans-serif;
+  width: 250px;
+  border: 2px solid #007acc; /* Blue border */
+  border-radius: 5px;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  font-size: 1em;
+  font-family: "nrt", sans-serif;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: #007acc; /* Blue on hover */
+}
+
+/* Title for Surah */
+ 
+
+.surah-title {
+  font-size: 30px;
+  color: #000000;
+  margin-top: 29px;
+  font-weight: 700;
+  text-align: center;
+  font-family: 'NotoKufiArabic-SemiBold', serif;
+}
+
+/* Ayah List Styling */
+/* Ayah Container */
+.ayah-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  padding: 10px;
+}
+
+.ayah-container .ayah {
+  background-color: #ffffff; /* Light blue background for ayahs */
+  border-radius: 0px;
+  padding: 15px;
+  
+  text-align: center;
+  color: #5a5454;
+  border: 1px solid #c3d3e6;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.ayah-container .ayah:hover {
+  background-color: #dce6ec7c; /* Darker blue for hover */
+}
+
+.ayah-container .ayah:hover .kurdish {
+  color: rgb(59, 57, 57); /* Change Kurdish text color on hover */
+}
+.ayah-container .ayah:hover .arabic{
+  color: #000000; /* Change Arabic text color on hover */
+}
+
+.ayah-container .arabic {
+  font-size: 25px;
+  color: #00446e;
+  font-weight: 700;
+  font-family: 'NotoKufiArabic-SemiBold', serif;
+  text-align: center;
+}
+
+.ayah-container .kurdish {
+  font-size: 18px;
+  color: #676768ea;
+  font-weight: 500;
+  font-family: 'Nrt', sans-serif; /* Kurdish font */
+  text-align: center;
+  margin-top: 10px;
+}
+
+.bismillah .arabic {
+  text-align: center;
+  margin: 20px 0 10px;
+  font-size: 27px;
+  color: #000000;
+  font-weight: 600;
+  font-family: 'NotoKufiArabic-SemiBold', serif;
+  direction: rtl;
+}
+
+.center-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  direction: rtl;
+}
+
+.message-box {
+  background-color: #ffffff; /* Light blue background */
+  border: 0px solid #007acc; /* Blue border */
+  padding: 20px 30px;
+  border-radius: 5px;
+ 
+  font-family: 'Nrt', sans-serif;
+  text-align: center;
+  color: red;
+  max-width: 400px;
+  font-size: 19px;
+}
+
+ 
+
+
+/* Footer */
+
+ footer {
+  background-color: #f4f4f4;
+  padding: 10px;
+  direction: rtl;
+  font-family: 'nrt', sans-serif;
+}
+
+/* Horizontal row with RTL */
+.footer-row {
+  display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+      margin-bottom: 30px;
+}
+
+/* Logo + Name */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+ margin-right: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 10px; /* 👈 This adds space between logo and border */
+  border-bottom: 1px solid #00000077;
+ margin-top: 30px;
+}
+
+
+.footer-logo img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+}
+
+.footer-logo .pagename {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0f0f0f;
+}
+
+.logo-description{
+  display: block;
+  text-decoration: none;
+  color: #414040;
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-family: 'nrt', sans-serif;
+  transition: color 0.3s ease;
+margin-right: 30px;
+}
+
+
+/* Description */
+.webparts {
+  direction: rtl;
+  margin-bottom: 20px;
+  margin-right: 180px;
+  margin-top: 25px;
+}
+
+.title-parts {
+  display: inline-block; /* 👈 key to make border fit content */
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #000000;
+  font-family: 'nrt', sans-serif;
+  border-bottom: 1px solid #0000006b;
+ 
+}
+
+
+/* Style links in vertical list */
+.webparts a {
+  display: block;
+  text-decoration: none;
+  color: #414040;
+  font-size: 16px;
+  margin-bottom: 5px;
+  font-family: 'nrt', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.webparts a:hover {
+  color: #082ca1; /* a nice green hover, change if you want */
+}
+ 
+
+.title-conect {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+   margin-bottom: 10px;
+  color: #222;
+  font-family: 'nrt', sans-serif;
+  border-bottom: 1px solid #0000006b;
+ 
+}
+
+.footer-social {
+  direction: rtl;
+  text-align: right;
+  margin-right: 150px;
+  margin-top: 20px;
+ 
+}
+
+/* 👇 Makes the whole link appear below the title */
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px; /* spacing from title */
+  text-decoration: none;
+  color: #414040;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: 'nrt', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.social-link:hover {
+  color: #082ca1;
+}
+
+.instagram-icon {
+  width: 24px;
+  height: 24px;
+}
+
+
+.footer-copy {
+ 
+  padding-top: 9px;
+  
+   margin-top: 10px;
+   
+   border-top: 1px solid #c2c2c2;
+  text-align: center;
+  direction: rtl;
+  font-family: 'nrt', sans-serif;
+ 
+}
+
+.footer-copy .descriptionss {
+  display: block;
+  text-decoration: none;
+  color: #414040;
+  font-size: 16px;
+ 
+  font-family: 'nrt', sans-serif;
+  transition: color 0.3s ease;
+}
+
+
+  </style>
+</head>
+<body>
+ 
+  <header>
+     <div class="header-content">
+    <img src="images/logo.jpg" alt="Logo" class="header-logo">
+    <h2 class="page-name">ڕێـــــــگــەی خــــودا</h2>
+  </div>
+
+    
+      <nav>
+        
+        <a href="index.html">سەرەکی</a>
+        <a href="prayer.html">نوێژەکان</a>
+        <a href="adhkar.html">زیکرەکان</a>
+       
+        <a href="quran.html">قورئان</a> 
+        <a href="allah-name.html">ناوەکانی خودا</a> <!-- Example link for Allah's names -->
+      </nav>
+    </header>
+
+  <div class="title-container">
+    <h1>تەواو سوڕەتەکانی قورئانی پیرۆز</h1>
+    <h4>لەگەڵ ماناکانیان بە زمانی شیرینی کوردی</h4>
+  </div>
+
+  <div class="search-bar">
+    <input type="text" id="searchAyahInput" placeholder="گەڕان بۆ ئایەت بە ژمارە...">
+    <button onclick="goToAyah()">ڕۆشتن</button>
+    
+    <button onclick="goBackToSurah()">گەڕانەوە بۆ سوڕەتەکە</button> <!-- Back to Surah Button -->
+    <button onclick="goBackToQuran()">گەڕانەوە بۆ پەڕەی قورئان</button>
+  </div>
+  
+  <h1 id="surah-title" class="surah-title"></h1>
+
+  <div id="ayahs" class="ayah-container">
+    <!-- Each Ayah will be dynamically added here -->
+  </div>
+  
+
+  
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const surahNum = urlParams.get("surah");
+  const ayahNum = urlParams.get("ayah");
+
+  let allAyahs = [];
+
+  function goBackToQuran() {
+    window.location.href = "quran.html";
+  }
+
+  function goToAyah() {
+    const ayahInput = document.getElementById("searchAyahInput").value.trim();
+    if (ayahInput) {
+      window.location.href = `surah.html?surah=${surahNum}&ayah=${ayahInput}`;
+    } else {
+      alert("تکایە ژمارەی ئایەتەکە بنوسە");
+    }
+  }
+
+  function goBackToSurah() {
+    window.location.href = `surah.html?surah=${surahNum}`;
+  }
+
+  function displayAyah(ayahArray, ayahNumber) {
+    const ayahsDiv = document.getElementById("ayahs");
+    const selectedAyah = ayahArray[ayahNumber - 1];
+
+    if (selectedAyah) {
+      let html = "";
+
+      // Show Bismillah if it's the first ayah and bismillah exists
+      if (ayahNumber == 1 && selectedAyah.bismillah) {
+        html += `
+          <div class="bismillah">
+            <p class="arabic">${selectedAyah.bismillah}</p>
+          </div>;
+        `;
+      }
+
+      html += `
+        <div class="ayah">
+          <p class="arabic">(${ayahNumber}) ${selectedAyah.arabic}</p>
+          <p class="kurdish">${selectedAyah.kurdish}</p>
+        </div>
+      `;
+
+      ayahsDiv.innerHTML = html;
+    } else {
+      ayahsDiv.innerHTML = `
+        <div class="center-message">
+          <div class="message-box">
+            <p>تکایە ژمارەی ئایەتەکە بەڕاستی بنوسە</p>
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  function displayAllAyahs(ayahArray) {
+    const ayahsDiv = document.getElementById("ayahs");
+    let html = "";
+
+    ayahArray.forEach((ayah, index) => {
+      // Show Bismillah only for the first ayah if it exists
+      if (index === 0 && ayah.bismillah) {
+        html += `
+          <div class="bismillah">
+            <p class="arabic">${ayah.bismillah}</p>
+          </div>
+        `;
+      }
+
+      html += `
+        <div class="ayah">
+          <p class="arabic">(${index + 1}) ${ayah.arabic}</p>
+          <p class="kurdish">${ayah.kurdish}</p>
+        </div>
+      `;
+    });
+
+    ayahsDiv.innerHTML = html;
+  }
+
+  Promise.all([
+    fetch("quran.xml").then(res => res.text()),
+    fetch("kurdish-quran.xml").then(res => res.text())
+  ]).then(([arabicXML, kurdishXML]) => {
+    const parser = new DOMParser();
+    const arabicDoc = parser.parseFromString(arabicXML, "text/xml");
+    const kurdishDoc = parser.parseFromString(kurdishXML, "text/xml");
+
+    const arabicSurah = arabicDoc.querySelector(`sura[index="${surahNum}"]`);
+    const kurdishSurah = kurdishDoc.querySelector(`sura[number="${surahNum}"]`);
+
+    if (!arabicSurah || !kurdishSurah) {
+      document.getElementById("ayahs").innerHTML = "<p>ئەم سوڕەتە نەدۆزرایەوە</p>";
+      return;
+    }
+
+    const surahName = arabicSurah.getAttribute("name");
+    document.getElementById("surah-title").textContent = "" + surahName;
+
+    const arabicAyahs = arabicSurah.getElementsByTagName("aya");
+    const kurdishAyahs = kurdishSurah.getElementsByTagName("aya");
+
+    allAyahs = [];
+
+    for (let i = 0; i < arabicAyahs.length; i++) {
+      const arabicText = arabicAyahs[i].getAttribute("text");
+      const bismillahText = arabicAyahs[i].getAttribute("bismillah"); // ← New line
+
+      const translationElement = kurdishAyahs[i].getElementsByTagName("translation")[0];
+      const kurdishText = translationElement ? translationElement.textContent : "‌‌‌‌تەفسیرەکەی بەردەست نییە";
+
+      allAyahs.push({
+        arabic: arabicText,
+        kurdish: kurdishText,
+        bismillah: bismillahText // ← New line
+      });
+    }
+
+    if (ayahNum) {
+      displayAyah(allAyahs, ayahNum);
+    } else {
+      displayAllAyahs(allAyahs);
+    }
+  }).catch(err => {
+    console.error("Error loading XML files:", err);
+  });
+
+  // Optional scroll effect for header
+  window.onscroll = function () {
+    let header = document.querySelector('header');
+    if (window.pageYOffset > 100) {
+      header.classList.add('shrink');
+    } else {
+      header.classList.remove('shrink');
+    }
+  };
+</script>
+
+  
+ 
+
+<footer>
+ 
+   <div class="footer-row">
+    
+<!-- Logo + Name + Description -->
+<div class="footer-logo-block">
+  <!-- Logo + Name Side by Side -->
+  <div class="footer-logo">
+    <img src="images/logo.jpg" alt="Logo">
+    <p class="pagename">ڕێــــگـــــەی خـــــودا</p>
+  </div>
+
+  <!-- Short Description Below -->
+  <p class="logo-description">
+    ماڵپەڕێکی ئیسلامییە کە بۆ مەبەستی نزیککردنەوەی دڵ و دەروونی مرۆڤ بە خوای گەورە دروستکراوە.
+    
+  </p>
+</div>
+
+    <!-- Description -->
+    <div class="webparts">
+      <p class="title-parts">
+        بەشەکان
+      </p>
+    
+        <a href="index.html">سەرەکی</a>
+        <a href="prayer.html">نوێژەکان</a>
+        <a href="adhkar.html">زیکرەکان</a>
+        <a href="quran.html">قورئان</a> 
+        <a href="allah-name.html">ناوەکانی خودا</a> 
+    </div>
+
+<div class="footer-social">
+  <p class="title-conect">بۆ پەیوەندیکردن </p>
+<br>
+  <a href="https://www.instagram.com/code_with_asma" target="_blank" class="social-link">
+   
+    code with asma
+      <img src="images/instagram.png" alt="Instagram" class="instagram-icon">
+  </a>
+</div>
+
+
+  </div>
+  
+
+  <div class="footer-copy">
+    <p class="descriptionss">
+      مافی هەموو موسڵمانێکه‌ بۆ سود وه‌رگرتن و بڵاو کردنه‌وه‌ی هەموو بابه‌ته‌کانی ماڵپه‌ڕی ڕێگـــەی خـــودا - 2025
+    </p>
+  </div>
+   
+</footer>
+
+</body>
+</html>

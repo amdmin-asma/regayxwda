@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ku">
+<head>
+  <meta charset="UTF-8">
+  <title>ناوەکانی خوای گەورە</title>
+ 
+  
+</head>
+<body>
+  <style>
+   
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* Body Styling */
+    body {
+      font-family: 'nrt', sans-serif;
+      background-color: #ffffff; /* Light blue background */
+      color: #333;
+      padding: 0;
+      text-align: right; /* Align text to the right for Kurdish */
+      direction: rtl; /* Right to Left Direction */
+      min-height: 100vh; /* Ensure body takes at least the full height of the window */
+      display: flex;
+      flex-direction: column; /* Makes the header, content, and footer stack vertically */
+    }
+
+
+
+    header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px; /* Larger padding initially */
+  background-color: #ffffff;
+  font-family: "nrt", sans-serif;
+ 
+  transition: padding 0.3s ease, font-size 0.3s ease; /* Smooth transition for changes */
+  border-bottom: 1px solid #0095ff; /* Add a line under the header */
+}
+
+header.shrink {
+  padding: 10px 20px; /* Smaller padding when sticky */
+}
+
+ 
+
+header.shrink h1 {
+  font-size: 25px; /* Smaller font size when sticky */
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: #007acc;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: color 0.3s ease; /* Transition for color change */
+  font-family: "nrt", sans-serif;
+}
+
+nav a:hover {
+  color: #001d30; /* Change text color on hover */
+}
+
+ 
+ 
+/* Inner content aligned in a row (right to left) */
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: flex-start;
+}
+
+/* Logo styling */
+.header-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #aaa;
+}
+
+/* Page name styling */
+.page-name {
+  font-size: 24px;
+  color: #2c2c2c;
+  font-family: 'nrt', sans-serif;
+  margin: 0;
+  font-weight: bold;
+}
+
+
+
+
+ 
+.title-container {
+  background-color: #f7f7f7; /* Shared background color */
+  padding: 20px 20px;
+  text-align: center;
+  border-radius: 0px; /* Optional: rounded corners */
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 30px;
+  margin: 0; /* Remove default margin */
+  color: #000000;
+  font-family: "nrt", sans-serif;
+  margin-bottom: 20px;
+}
+
+h4 {
+  font-size: 18px;
+  margin: 0; /* Remove default margin */
+  color: #4e4e4e;
+  font-family: "nrt", sans-serif;
+}
+
+
+
+    .names-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      margin-bottom: 30px;
+    }
+
+    .name-item {
+      background: white;
+      padding: 20px;
+      border: 1px solid #007acc;
+      border-radius: 5px;
+   
+    }
+    .name-item:hover {
+      background-color: #e5ecf379; /* Light blue on hover */
+      cursor: pointer;
+    }
+   
+
+    .arabic-name {
+      font-size: 23px;
+      color: #000000;
+      margin-bottom: 10px;
+     font-weight: 500;
+      font-family: 'NotoKufiArabic-SemiBold', sans-serif;
+      text-align: center;
+    }
+
+    .meaning {
+      font-size: 18px;
+      color: #848585;
+      margin-top: 5px;
+      font-family: "nrt" , sans-serif;
+      text-align: right;
+    }
+
+    .number {
+  color: #04003f; /* orange-gold */
+  font-size: 20px;
+  margin-right: 8px;
+  font-weight: bold;
+  font-family: "nrt", sans-serif;
+}
+
+.description {
+  font-size: 18px;
+  color: #4e4e4e;
+  text-align: center;
+  margin: 20px 0;
+  line-height: 1.6;
+  font-family: "nrt", sans-serif;
+}
+ 
+
+
+
+/* Footer */
+
+ footer {
+  background-color: #f4f4f4;
+  padding: 10px;
+  direction: rtl;
+  font-family: 'nrt', sans-serif;
+}
+
+/* Horizontal row with RTL */
+.footer-row {
+  display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+      margin-bottom: 30px;
+}
+
+/* Logo + Name */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+ margin-right: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 10px; /* 👈 This adds space between logo and border */
+  border-bottom: 1px solid #00000077;
+ margin-top: 30px;
+}
+
+
+.footer-logo img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+}
+
+.footer-logo .pagename {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0f0f0f;
+}
+
+.logo-description{
+  display: block;
+  text-decoration: none;
+  color: #414040;
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-family: 'nrt', sans-serif;
+  transition: color 0.3s ease;
+margin-right: 30px;
+}
+
+
+/* Description */
+.webparts {
+  direction: rtl;
+  margin-bottom: 20px;
+  margin-right: 180px;
+  margin-top: 25px;
+}
+
+.title-parts {
+  display: inline-block; /* 👈 key to make border fit content */
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #000000;
+  font-family: 'nrt', sans-serif;
+  border-bottom: 1px solid #0000006b;
+ 
+}
+
+
+/* Style links in vertical list */
+.webparts a {
+  display: block;
+  text-decoration: none;
+  color: #414040;
+  font-size: 16px;
+  margin-bottom: 5px;
+  font-family: 'nrt', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.webparts a:hover {
+  color: #082ca1; /* a nice green hover, change if you want */
+}
+ 
+
+.title-conect {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+   margin-bottom: 10px;
+  color: #222;
+  font-family: 'nrt', sans-serif;
+  border-bottom: 1px solid #0000006b;
+ 
+}
+
+.footer-social {
+  direction: rtl;
+  text-align: right;
+  margin-right: 150px;
+  margin-top: 20px;
+ 
+}
+
+/* 👇 Makes the whole link appear below the title */
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px; /* spacing from title */
+  text-decoration: none;
+  color: #414040;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: 'nrt', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.social-link:hover {
+  color: #082ca1;
+}
+
+.instagram-icon {
+  width: 24px;
+  height: 24px;
+}
+
+
+.footer-copy {
+ 
+  padding-top: 9px;
+  
+   margin-top: 10px;
+   
+   border-top: 1px solid #c2c2c2;
+  text-align: center;
+  direction: rtl;
+  font-family: 'nrt', sans-serif;
+ 
+}
+
+.footer-copy .descriptionss {
+  display: block;
+  text-decoration: none;
+  color: #414040;
+  font-size: 16px;
+ 
+  font-family: 'nrt', sans-serif;
+  transition: color 0.3s ease;
+}
+
+
+
+    
+      </style>
+  <header>
+     <div class="header-content">
+    <img src="images/logo.jpg" alt="Logo" class="header-logo">
+    <h2 class="page-name">ڕێـــــــگــەی خــــودا</h2>
+  </div>
+
+    
+      <nav>
+        
+        <a href="index.html">سەرەکی</a>
+        <a href="prayer.html">نوێژەکان</a>
+        <a href="adhkar.html">زیکرەکان</a>
+       
+        <a href="quran.html">قورئان</a> 
+        <a href="allah-name.html">ناوەکانی خودا</a> <!-- Example link for Allah's names -->
+      </nav>
+    </header>
+  
+  <div class="title-container">
+    <h1>ناوە پیرۆزەکانی خوای گەورە</h1>
+    <h4>لەگەڵ ماناکانیان بە زمانی شیرینی کوردی</h4>
+  </div>
+  <p class="description">
+    خودای گەورە بە گێڕانەوەكانی پێغەمبەری ئیسلام (صلی الله علیه وسلم) ٩٩ ناوی هەیە</p>
+ 
+<div class="names-grid" id="allah-names"></div>
+
+<script>
+const allahNames = [
+  { arabic: "الله", meaning: " پەرستراو" },
+  { arabic: "الرَّحْمَنُ", meaning:  "بەبەزەیی " },
+  { arabic: "ٱلرَّحِيمُ", meaning:  "به‌خشنده‌" },
+  { arabic: " الْمَلِكُ", meaning:  "موڵك بەدەست، دەسەڵاتدار " },
+  { arabic: "الْقُدُّوسُ ", meaning:  "پیرۆز، پاك و بێگەرد " },
+  { arabic: "السَّلاَمُ ", meaning:  "بڵاوكەرەوەی ئاشتی، بێ خەوش " },
+  { arabic: " الْمُؤْمِنُ", meaning:  "دڵنیاكەری موسوڵمانان بە بەجێهێنانی بەڵێنەكانی " },
+  { arabic: " الْمُھَیْمِنُ", meaning:  "چاودێر و پارێزەری هەموو شتێك " },
+  { arabic: "الْعَزِیزُ ", meaning:  "زاڵ و دەسەڵاتدار " },
+  { arabic: "الْجَبَّارُ ", meaning:  "خاوەن دەسەڵاتی ناچاركەر " },
+  { arabic: "الْمُتَكَبِّرُ ", meaning:  "زۆر گەورە" },
+  { arabic: " الْخَالِقُ", meaning:  " دروستكەر و بەدیهێنەرە لە نەبوونەوە بۆ بوون" },
+  { arabic: "الْبَارِئُ ", meaning:  "بەدیهێنەر و پارێزەری بەدیهێنراوەكان " },
+  { arabic: "الْمُصَوِّرُ ", meaning:  "نیگاركێش و وێنەكێش " },
+  { arabic: " الْغَفَّارُ", meaning:  "لێخۆشبوو و داپۆشەری گوناهـەكان " },
+  { arabic: "الْقَھَّارُ ", meaning:  " بە زەبر و بەدەسەڵات و بە توانا" },
+  { arabic: "الْوَھَّابُ ", meaning:  "بەخشەری بێ ئەندازە " },
+  { arabic: "الرَّزَّاقُ ", meaning:  "ڕزق و ڕۆزی بەخشەر بە هەمووان " },
+  { arabic: "الْفَتَّاحُ ", meaning:  "دەرووكەرەوە و ئەو كەسەی لە كاتی تەنگانە دەرگایەكی پێشبینی نەكراوت بە ڕوودا دەكاتەوە " },
+  { arabic: "العَاِیمُ ", meaning:  "زانا و ئاگادار بەسەر هەمووشتێكەوە " },
+  { arabic: " الْقَابِضُ", meaning:  "گوشەری هەموو گەردوون و بونەوەر " },
+  { arabic: "الْبَاسِطُ ", meaning:  " ڕزق و ڕۆزی بەخش بەو كەسەی بیەوێت" },
+  { arabic: " الْخَافِضُ", meaning:  "نزمكەر و ڕسواكەری دوژمنانی ئایینەكەی " },
+  { arabic: " الرَّافِعُ", meaning:  "بەرزكەرەوە و بڵندكەرەوەی ئەو كەسانەی دەیپەرستن " },
+  { arabic: "ٱلْمُعِزُّ ", meaning:  "بەهێزكەر و دەسەڵات بەخش " },
+  { arabic: " المُذِلُّ", meaning:  "زەلیلكەر و سەرشۆڕكەر " },
+  { arabic: "السَّمِیعُ ", meaning:  "گوێبیست بە هەموو شتێك لە دونیا و كۆتایی " },
+  { arabic: "الْبَصِیرُ ", meaning:  "بینەر بە هەموو شتێك لە دونیا و كۆتایی " },
+  { arabic: " الْحَكَمُ", meaning:  "دادپەروەرترین دادوەر و ناوبژیوان  " },
+  { arabic: "الْعَدْلُ ", meaning:  "جێبەجێكاری دادگەری " },
+  { arabic: " اللَّطِیفُ", meaning:  "نەرمونیان و بەسۆز " },
+  { arabic: "الْخَبِیرُ ", meaning:  "زانا و بە ئاگا لە هەموو كاتێك " },
+  { arabic: "الْحَلِیمُ ", meaning:  "زۆر نەرم و نیان و هێدی و هێواش و بەئارام و لەسەر خۆو بێ‌ پەلە " },
+  { arabic: " الْعَظِیمُ", meaning:  " زۆر گەورەو مەزن و بەتواناو بەهێزو بەدەسەڵات و شكۆدار" },
+  { arabic: " الْغَفُورُ", meaning:  "لێبوردەو لێخۆشبەرو گوناه و نهێنی داپۆش " },
+  { arabic: " الشَّكُورُ", meaning:  "سوپاسگوزارو بەخشندەی خێرو چاكەو نازو نیعمەت " },
+  { arabic: "الْعَلِيُّ ", meaning:  "بڵند و باڵا " },
+  { arabic: " الْكَبِیرُ", meaning:  "گەورەو بەدەسەڵاتی بێ‌ سنوور لەگەورەیی و دەسەڵاتدا " },
+  { arabic: "الْحَفِیظُ ", meaning:  "پارێزەری دروستكراوەكانی لە تیاچوون و لەناو چوون‌و لەزیان پێ‌ كەوتنیان " },
+  { arabic: "المُقیِت ", meaning:  "فریاد ڕس و فریادكەرو بەهانا چووی دروستكراوەكانی " },
+  { arabic: " الْحسِیبُ", meaning:  "ژمێریارو لێپرسەرەوەو نگاداری هەموو شتەكانی بوونەوەر " },
+  { arabic: " الْجَلِیلُ", meaning:  "بەرزو بەڕێزو شكۆدار لەسەر هەموو بوونەوەر " },
+  { arabic: "الْكَرِیمُ ", meaning:  "زۆر سەخی و بەخشندەو بەڕێزو دەستكراوەو دەستڕۆو دەست واڵا " },
+  { arabic: " الرَّقِیبُ", meaning:  " ئاگادارو چاودێرو پەیدار بەسەر هەموو بوونەوەردا" },
+  { arabic: "الْمُجِیبُ ", meaning:  "وەڵامدەرەوەی هەموو پرس و داوحوازو ئارەزووەكانی دروستكراوەكانی " },
+  { arabic: " الْوَاسِعُ", meaning:  " زۆر فراوان و گوشادو بەسەلیقەو بەتوانا" },
+  { arabic: "الْحَكِیمُ ", meaning:  "زۆر داناو زاناو كارزان و كاربەجێ‌ و كار لەجێ‌‌و وردو لێزان " },
+  { arabic: "الْوَدُودُ ", meaning:  "زۆر بەسۆزو خۆشەویست و دۆستدار " },
+  { arabic: " الْمَجِیدُ", meaning:  "زۆر پایە بەرزو سەر بەرزو سەر بڵندو شكۆدارو بەڕێز " },
+  { arabic: " الْبَاعِثُ", meaning:  "زیندووكەرەوەو ژێنەرو نێرەرو گۆرەری سەرجەم دروستكراوەكانیەتی " },
+  { arabic: "الشَّھِیدُ ", meaning:  "ئاگادارو زانا " },
+  { arabic: "الْحَقُّ ", meaning:  "ڕاست و دروست و هەق و هەقگۆ " },
+  { arabic: "الْوَكِیلُ ", meaning:  "پشت و پەناو، دابینكەرەو دەستەبەرو فەراهەمهێنەرە " },
+  { arabic: "الْقَوِيُّ ", meaning:  "زۆر بەتواناو بەهێزو بەدەسەڵات و زاڵە بەسەر بوونەوەریدا " },
+  { arabic: "الْمَتِینُ ", meaning:  " زۆر بەهێزو پتەو و بەتواناو قایم و نەگۆڕە" },
+  { arabic: "الْوَلِيُّ ", meaning:  "دۆست و پشتیوان و هاوكارو سەرپەرشتكار " },
+  { arabic: "الْحَمِیدُ ", meaning:  "سوپاسكەری بەندەكانیەتی لەسەر چاكە كردن، بەندەكانیش سوپاسی خوا دەكەن لەسەر بەخششەكانی " },
+  { arabic: "الْمُحْصِي ", meaning:  " ژمێرەرو ئاماركەری هەموو شتەكانی بوونەوەرە" },
+  { arabic: " الْمُبْدِئُ", meaning:  "داهێنەرو دروستكەرو دەستپێكەری سەرەتای دروست كردن و بوونەوەرە " },
+  { arabic: "الْمُعِیدُ ", meaning:  "گێڕەوەو دووپات كەرەوەی خەلق و بوونەوەرە بۆ حاڵەتی پێشوو و سەرەتا " },
+  { arabic: "الْمُحْیِي ", meaning:  "زیندووكەرەوە " },
+  { arabic: "الْمُِمیتُ ", meaning:  "مرێنەرو لەناو بەری گیانلەبەرانی هەموو بوونەوەرە " },
+  { arabic: "الْحَيُّ ", meaning:  "زیندوو " },
+  { arabic: " الْقَیُّومُ", meaning:  "هەمیشە ڕاگرو بەرپاو ڕاوەستاوو ئامادەباش و، ڕێكخەرو بەڕێوەبەری بوونەوەر " },
+  { arabic: "الْوَاجِدُ ", meaning:  "دروست كەرو بەدیهێنەرو فەراهەمهێنەری سەرجەم بوونەوەر، هەر لەكایەو هەر هەبوو " },
+  { arabic: "الْمَاجِدُ ", meaning:  "خاوەن پلەو پایەو شكۆو ڕێزی بێ‌ شومار " },
+  { arabic: "الْواحِدُ ", meaning:  "تاك و تەنیاو بێ‌ هاوەڵ و بێ‌ وێنە لە خودی خۆی و لەسەرجەم ناو و كردارو سیفەتە بەرزو بەڕێزەكانی لەچاو دروست كراوەكانی خۆی " },
+  { arabic: "اَلاَحَدُ ", meaning:  "تاك " },
+  { arabic: " الصَّمَدُ", meaning:  "بێ‌ نیازو مەبەست و جێی نیازو مەبەست‌و هیوا، لە هەموو دروستكراوەكانی بێ‌ نیازو مەبەست و بێ‌ منەتە‌و پێویستی بەهیچ شتێك نیە، جێی نیازو مەبەستی هەموو دروستكراوێكە، هەموو شتێك لە بوونەوەردا پیویستی به وه " },
+  { arabic: "الْقَادِرُ ", meaning:  "زۆر بەتواناو بەدەسەڵات " },
+  { arabic: " الْمُقْتَدِرُ", meaning:  "سەرچاوەی هەموو هێزو دەسەڵات و توانایەك لە بوونەوەردا بۆ دروستكراوەكانی " },
+  { arabic: "الْمُقَدِّمُ ", meaning:  "پێشخەرو پێشهێنەر، هەموو شتێك دەزانێ‌ پێش هاتن و ڕودانی، دەتوانێ‌ هەمو شتێك وە پێش بخات " },
+  { arabic: "الْمُؤَخِّرُ ", meaning:  "دواخەری گشت ڕوداو و پێشهاتەكانە، دەتوانێ‌ هەموو شتێك لەكاتی خۆی ڕاگرێ‌ و دوا بخاو ڕوونەدات " },
+  { arabic: "الأوَّلُ ", meaning:  "سەرەتاو یەكەمی هەموو شتێكە لە بووندا، هیچ شتێك لە بوونەوەر نەبووە، ئەو هەر هەبووەو بێ‌ سەرەتایە " },
+  { arabic: "الآخِرُ ", meaning:  "كۆتاو دوماهی هەموو شتێكە لەبوونداو، هیچ شتێك لە بوونەوەردا نامێنێ‌ و كۆتایی پێ‌ دێ‌، كەچی خوای گەورە هەر دەمێنێ‌ و بێ‌ كۆتایە و قەت لەناو ناچێ‌ و دوایی نایەت " },
+  { arabic: "ٱلْظَّاهِرُ ", meaning:  " دیارو ئاشكراو هەیە، لە ڕێگەی بوونەوەرە بوونی خۆی دەنوێنێ‌‌و پەی پێ‌ دەبرێت" },
+  { arabic: " الْبَاطِنُ", meaning:  "نهێنی و نادیارو بزرو پەردە پۆش و شاراوەو نادیدەیە لەبەر چاوی دروستكراوەكانی " },
+  { arabic: "الْوَالِي ", meaning:  "سەرپەرشتیارو پاشا و خاوەنی هەموو بوون و بوونەوەر " },
+  { arabic: "الْمُتَعَالِي ", meaning:  "زۆر بەرزو بەڕێزو پلەدارو بەدەسەڵات و خۆ بەرز گر " },
+  { arabic: "الْبَرُّ ", meaning:  "چاكەكارو بەخشندەی بێ‌ سنوور " },
+  { arabic: "التَوَّابُ ", meaning:  "زۆر لێخۆشبوو و تۆبە وەرگرو لێبوردەیە " },
+  { arabic: " الْمُنْتَقِمُ", meaning:  " تۆلە لێ سێنەرەوەی ستەمكاران و تاوانباران" },
+  { arabic: "العَفُوُّ ", meaning:  "لێبوردەو داپۆشەری گوناهـ و تاوان " },
+  { arabic: "الرَّؤُوفُ ", meaning:  "زۆر بەسۆزو بەزەیی و بەڕەحمەت لەگەڵ دروستكراوەكانیدا " },
+  { arabic: "مَالِكُ الْمُلْكِ ", meaning:  " خاوەن و پاشاو فەرمانڕەوای هەموو ماڵ و موڵك و سەروەت و سامان و بوونێك لە بوونەوەردا" },
+  { arabic: "ذُوالْجَلاَلِ وَ الإكْرَامِ ", meaning:  "خاوەنی ئەو پەڕی ڕێزو پایەو شكۆ " },
+  { arabic: "الْمُقْسِطُ ", meaning:  "دادگەرو دادپەروەرو دادڕەو لە حوكم و دەسەڵات و بڕیارو دابەشكردندا " },
+  { arabic: "الْجَامِعُ ", meaning:  " كۆكەرەوەو گردكەرەوەو گشتگیری هەموو شتەكانی بوونەوەر" },
+  { arabic: "الْغَنِيُّ ", meaning:  "زۆر دەوڵەمەندو بێ‌ نیازو بێ‌ ئاتاج و پێویستە لە هەموو شتێك " },
+  { arabic: "الْمُغْنِي ", meaning:  "دەوڵەمەندكەری خەڵك و بوونەوەرە، هەموو بوونەوەر پێویستی بە دەوڵەمەندی ئەوە " },
+  { arabic: "اُلمَانِعُ ", meaning:  "بەرگری كار، پارێزكار " },
+  { arabic: " الضَّارَّ", meaning:  "زیانبەخش " },
+  { arabic: "النَّافِعُ ", meaning:  "سودبەخش و زۆر بەكەڵك و بەسوود بۆ هەموو بوونەوەر " },
+  { arabic: "النُّورُ ", meaning:  "نورو ڕوناكی و چراو درەخشان و ڕوناككەرەوەی بوونەوەرە " },
+  { arabic: "الْھَادِي ", meaning:  "هیدایەت دەرو ڕێنمایی كەرو ڕاستكەرو ڕێپیشاندەری دروستكراوەكانە " },
+  { arabic: "الْبَدِیعُ ", meaning:  "ئافراندن و جوانكارو داهێنەری بوون و بوونەوەرە " },
+  { arabic: "الْبَاقِي ", meaning:  "هەمیشە بەردەوام و هەرماوەیەو قەت لەنێو ناچێت " },
+  { arabic: "الْوَارِثُ ", meaning:  "میراتگری هەموو بوون و بوونەوەر، هەموو شتێك لەنێو دەچێ‌ و هەر ئەو دەمێنێ‌ " },
+  { arabic: "الرَّشِیدُ ", meaning:  "سەر ڕاست و ڕێناس و شارەزاو ڕێ‌ نیشاندەرو ڕاستە ڕێ‌ كارە " },
+  { arabic: "الصَّبُورُ ", meaning:  "زۆر بە ئارام و لەسەر خۆو خۆڕاگرە " },
+  
+ 
+];
+
+
+function toKurdishNumber(num) {
+  const kurdishNumbers = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+  return num.toString().split('').map(digit => kurdishNumbers[digit]).join('');
+}
+
+const container = document.getElementById('allah-names');
+
+allahNames.forEach((name, index) => {
+  const nameDiv = document.createElement('div');
+  nameDiv.className = 'name-item';
+  nameDiv.innerHTML = `
+    <div class="arabic-name">${name.arabic}</div>
+    <div class="meaning">${toKurdishNumber(index + 1)}: ${name.meaning}</div>
+  `;
+  container.appendChild(nameDiv);
+});
+
+window.onscroll = function() {
+  let header = document.querySelector('header');
+  if (window.pageYOffset > 100) {  // When you scroll 100px from the top
+    header.classList.add('shrink');
+  } else {
+    header.classList.remove('shrink');
+  }
+};
+
+</script>
+
+
+
+
+<footer>
+ 
+   <div class="footer-row">
+    
+<!-- Logo + Name + Description -->
+<div class="footer-logo-block">
+  <!-- Logo + Name Side by Side -->
+  <div class="footer-logo">
+    <img src="images/logo.jpg" alt="Logo">
+    <p class="pagename">ڕێــــگـــــەی خـــــودا</p>
+  </div>
+
+  <!-- Short Description Below -->
+  <p class="logo-description">
+    ماڵپەڕێکی ئیسلامییە کە بۆ مەبەستی نزیککردنەوەی دڵ و دەروونی مرۆڤ بە خوای گەورە دروستکراوە.
+    
+  </p>
+</div>
+
+    <!-- Description -->
+    <div class="webparts">
+      <p class="title-parts">
+        بەشەکان
+      </p>
+    
+        <a href="index.html">سەرەکی</a>
+        <a href="prayer.html">نوێژەکان</a>
+        <a href="adhkar.html">زیکرەکان</a>
+        <a href="quran.html">قورئان</a> 
+        <a href="allah-name.html">ناوەکانی خودا</a> 
+    </div>
+
+<div class="footer-social">
+  <p class="title-conect">بۆ پەیوەندیکردن </p>
+<br>
+  <a href="https://www.instagram.com/code_with_asma" target="_blank" class="social-link">
+   
+    code with asma
+      <img src="images/instagram.png" alt="Instagram" class="instagram-icon">
+  </a>
+</div>
+
+
+  </div>
+  
+
+  <div class="footer-copy">
+    <p class="descriptionss">
+      مافی هەموو موسڵمانێکه‌ بۆ سود وه‌رگرتن و بڵاو کردنه‌وه‌ی هەموو بابه‌ته‌کانی ماڵپه‌ڕی ڕێگـــەی خـــودا - 2025
+    </p>
+  </div>
+   
+</footer>
+
+
+
+
+</body>
+</html>
+
+ 
